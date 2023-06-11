@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>uemhssaa_registrationform</title>
+        <link rel="stylesheet" href="sytlee.css">
+        <link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css" />
+        <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <form id="contact" name="google-sheet" action="" method="post">
+                <div class="logo">
+                    <img class="logoImg" src="./logo.png" alt="">
+                </div>
+                <h6>Udaipur English Medium Higher Secondary School Alumni Association</h6>
+                <h1>Registration Form</h1>
+                <h3>Fill the form below and press the submit button!</h3>
+                <div class="row">
+                    <!-- first column -->
+                    <div class="column">
+                        <fieldset>
+                            <p>First Name</p>
+                            <input type="text" placeholder="" name="fname" required autofocus>
+                        </fieldset>
+                        <fieldset>
+                            <p>Last Name</p>
+                            <input type="text" placeholder="" name="lname" required autofocus>
+                        </fieldset>
+                        <fieldset>
+                            <p>Email</p>
+                            <input type="email" placeholder="" name="email" required autofocus>
+                        </fieldset>
+                        <fieldset>
+                            <p>Date of Birth</p>
+                            <input type="text" placeholder="" name="date" onfocus="(this.type = 'date')"
+                                required autofocus>
+                        </fieldset>
+                        <!-- adding all country code list -->
+                        <fieldset>
+                            <p>Phone Number</p>
+                            <input type="Number" placeholder="" name="phone">
+                        </fieldset>
+                    </div>
+                    <!-- second column -->
+                    <div class="column">
+                        <fieldset>
+                            <p>What is your gender?</p>
+                                Male<input type="radio"name="gender" value="Male">
+                                Female<input type="radio" name="gender" value="Female">
+                        </fieldset>
+                        <fieldset>
+                            <div class="row">
+                                <div class="column">
+                                    <label for="contact">Batch</label>
+                                    <select name="batch">
+                                        <option vale="H.S+2(2018-2019)">H.S+2(2018-2019)</option>
+                                        <option value="H.S+2(2019-2020)">H.S+2(2019-2020)</option>
+                                        <option value="H.S+2(2020-2021)">H.S+2(2020-2021)</option>
+                                        <option value="H.S+2(2021-2022)">H.S+2(2021-2022)</option>
+                                        <option value="H.S+2(2022-2023)">H.S+2(2022-2023)</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                    <label for="contact">If others</label>
+                    <input type="text" name="others" id="others" placeholder="">
+                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <fieldset class="offline">
+                    <div class="column">
+                        <p>Why Do You Want To Join Us?</p>
+                        <textarea id="issue" name="joinus" placeholder="describe"></textarea>
+                    </div>
+                    &nbsp
+                    <div class="column">
+                        <p>Where Do You Here About Us?</p>
+                        <textarea id="issue" name="aboutus" placeholder="describe"></textarea>
+                    </div>
+                </fieldset>
+                <h1>Payment</h1>
+                <h3>One Time Membership: 200/- only</h3>
+                <fieldset>
+                    <div class="column">
+                        <p>Payment Method</p>
+                        <select name="method" id="dropdown">
+                            <option value="Cash">Cash</option>
+                            <option value="Online">Online</option>
+                        </select>
+
+                    </div>
+                </fieldset>
+                <fieldset class="online">
+                    <p>Scan the QR to pay</p>
+                    <img src="payment.png">
+                    &nbsp
+                    <p>or copy the upi id:-</p>
+                <p>9612995854@kotak</p>
+                </fieldset>
+                
+                <fieldset class="online">
+                    <p>Upload File</p>
+                    <a href="https://drive.google.com/drive/folders/1H3gP6PGfqZ87ZP0FMoVKe4nNli3rR-ch?usp=sharing"> Click Here</a>
+                </fieldset>
+                <!-- submit button -->
+                <fieldset>
+                    <button type="submit" name="button" id="button">Submit Now</button>
+                </fieldset>
+            </form>
+        </div>
+    
+
+
+
+        <!-- Javascript to initialize the code list -->
+        <script>
+            var input = document.querySelector("#phone");
+            let online = document.querySelectorAll(".online");
+            // window.intlTelInput(input, {
+            //     separateDialCode: true
+            // });
+            const dropdown = document.getElementById("dropdown");
+            dropdown.addEventListener("change", handleDropdownChange);
+
+            function handleDropdownChange() {
+                const selectedOption = dropdown.value;
+                console.log(selectedOption);
+
+                if (selectedOption === "Cash") {
+                    online.forEach(e => {
+                        e.classList.toggle("active");
+                    })
+                    // Hide or show menus related to Option 1
+                    // You can use CSS classes and the style.display property to hide or show elements
+                    // Example: document.getElementById("menu1").style.display = "none";
+                } else if (selectedOption === "Online") {
+                    online.forEach(e => {
+                        e.classList.toggle("active");
+                    })
+                    // Hide or show menus related to Option 2
+                }
+            }
+
+
+
+
+        </script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwRUEpmihLppim7Q-Mq8eBdT7Lkl9SGGaPEoJm2a_msjTKh8kaaMxSFaAk2Pddcs0VH/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwjmtFg3dL8hrBd76XMOTV9F5bSKHQY4V3-BBe40HKtEpr_HZaDykZ5lHFWVVrYTRXH/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+    </body>
+
+    </html>
